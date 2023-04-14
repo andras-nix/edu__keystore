@@ -101,7 +101,9 @@ abstract class KeystoreTest {
   }
 
   private void fillKeystoreWithKeys() {
-    IntStream.range(0, Keystore.MAX_CAPACITY).mapToObj("CC-%05d"::formatted).forEach(keystore::add);
+    IntStream.range(0, Keystore.MAX_CAPACITY)
+        .mapToObj(i -> String.format("CC-%05d", i))
+        .forEach(keystore::add);
   }
 
   private void assertKeystoreIsFull() {
